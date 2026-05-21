@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Merge multiple phone photos into a single image or a PDF with custom page sizes."
+    />
+    <title>Photo Merge Studio</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Mobile-friendly photo combiner</p>
+          <h1>Turn multiple photos into one image or a PDF.</h1>
+          <p class="subtitle">
+            Upload pictures from your phone, pick a size, choose your layout, and download a merged image or a ready-to-share PDF.
+          </p>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel controls-panel">
+          <div class="dropzone">
+            <label for="image-input">Upload photos</label>
+            <input id="image-input" type="file" accept="image/*" multiple />
+            <p>Pick multiple images from your phone or computer. They stay in your browser and are never uploaded.</p>
+          </div>
+
+          <div class="control-grid">
+            <label>
+              <span>Output size</span>
+              <select id="size-preset">
+                <option value="auto">Auto (keep each photo size)</option>
+                <option value="phone-portrait">Phone portrait · 1080 × 1920</option>
+                <option value="square">Square · 1080 × 1080</option>
+                <option value="a4-portrait">A4 portrait · 1240 × 1754</option>
+                <option value="a4-landscape">A4 landscape · 1754 × 1240</option>
+                <option value="letter-portrait">Letter portrait · 1275 × 1650</option>
+                <option value="custom">Custom size</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Layout</span>
+              <select id="layout-mode">
+                <option value="vertical">Vertical stack</option>
+                <option value="horizontal">Horizontal strip</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Image download type</span>
+              <select id="image-format">
+                <option value="png">PNG</option>
+                <option value="jpeg">JPG</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Background color</span>
+              <input id="background-color" type="color" value="#ffffff" />
+            </label>
+          </div>
+
+          <div id="custom-size" class="custom-size hidden">
+            <label>
+              <span>Width (px)</span>
+              <input id="custom-width" type="number" min="100" step="10" value="1080" />
+            </label>
+            <label>
+              <span>Height (px)</span>
+              <input id="custom-height" type="number" min="100" step="10" value="1920" />
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="download-image" type="button">Download merged image</button>
+            <button id="download-pdf" type="button" class="secondary">Download PDF</button>
+          </div>
+
+          <p id="status" class="status" aria-live="polite">Add at least one image to get started.</p>
+        </section>
+
+        <section class="panel preview-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Selected photos</h2>
+              <p id="summary">0 photos selected.</p>
+            </div>
+          </div>
+
+          <div id="empty-state" class="empty-state">
+            <p>Your uploaded photos will appear here.</p>
+          </div>
+          <div id="preview-list" class="preview-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
